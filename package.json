@@ -1,0 +1,26 @@
+{
+  "name"          : "kkb-framework",
+  "description"   : "此框架是开课吧的前端框架的基础类库",
+  "url"           : "http://backbonejs.org",
+  "keywords"      : ["framework", "browser"],
+  "author"        : "Lixianzhng <xzli@kaikeba.com>",
+  "dependencies"  : {
+
+  },
+  "devDependencies": {
+
+  },
+  "scripts": {
+  },
+  "main"          : "kkb.framework.js",
+  "version"       : "0.0.1",
+  "license"       : "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jashkenas/backbone.git"
+  },
+  "files": [
+    "kkb.framework.js", "kkb.framework.min.js"
+  ]
+}
+
