@@ -2,7 +2,7 @@
   "name": "kkb-frontend-framework",
   "version": "1.0.0",
   "description": "开课吧前端开发框架",
-  "main": "./kkb.framework.js",
+  "main": "kkb.framework.js",
   "scripts": {
   },
   "author": "xzli@kaikeba.com",

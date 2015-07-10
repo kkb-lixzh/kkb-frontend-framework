@@ -1,7 +1,7 @@
 {
   "name"          : "kkb-framework",
-  "main"          : "./kkb.framework.js",
+  "main"          : "kkb.framework.js",
   "dependencies"  : {
   },
-  "ignore"        : ["src", "package.json"]
+  "ignore"        : ["src"]
 }
