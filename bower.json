@@ -1,7 +1,7 @@
 {
-  "name"          : "kkb-framework",
-  "main"          : "kkb.framework.js",
-  "dependencies"  : {
-  },
-  "ignore"        : ["src"]
+	"name": "kkb-framework",
+	"main": "kkb.framework.js",
+	"dependencies": {
+	},
+	"ignore": ["src","bower_components","lib","node_modules","tests","dist"]
 }

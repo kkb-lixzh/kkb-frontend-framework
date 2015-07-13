@@ -1,11 +1,27 @@
-module.exports=function(grunt){
+module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        bower: {
+            install: {
+                options: {
+                    targetDir: 'lib',
+                    layout: 'byComponent',
+                    install: true,
+                    verbose: false,
+                    cleanTargetDir: false,
+                    cleanBowerDir: false,
+                    bowerOptions: {}
+                }
+            }
+        },
         copy: {
             main: {
-                files: [
-                    {expand: true, cwd: 'src/', src: ['**'], dest: '/'}
-                ]
+                files: [{
+                    expand: true,
+                    cwd: 'src/',
+                    src: ['**'],
+                    dest: '/'
+                }]
             }
         },
         concat: {
@@ -17,23 +33,33 @@ module.exports=function(grunt){
                     'src/**/*.js',
                 ],
                 dest: 'kkb.framework.js'
+            },
+            built_js: {
+                src: [
+                    'src/**/*.js',
+                ],
+                dest: 'dist/js/kkb.framework.js'
+            },
+            lib_js: {
+                src: ['lib/**/*.js'],
+                dest: "dist/js/lib.js"
             }
         },
         uglify: {
             options: {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
                 //beautify : true,
-                mangle : true //混淆变量名
+                mangle: true //混淆变量名
             },
-            built:{
-                src:["kkb.framework.js"],
-                dest:"kkb.framework.min.js"
+            built: {
+                src: ["kkb.framework.js"],
+                dest: "kkb.framework.min.js"
             }
         },
-        jshint:{
-            all:['src/*.js','src/**/*.js']
+        jshint: {
+            all: ['src/*.js', 'src/**/*.js']
         },
-        cssmin:{
+        cssmin: {
             minify: {
                 expand: true,
                 cwd: 'dist/css/',
@@ -42,9 +68,21 @@ module.exports=function(grunt){
                 ext: '.min.css'
             }
         },
-        clean:{
+        clean: {
             js: ["dist/js/built.js"],
             css: ["dist/css/built.css"]
+        },
+        karma: {
+            unit: {
+                configFile: "tests/karma.conf.js",
+                options: {
+                    files: ['**/*.js'],
+                    browsers: ['Chrome'/*, 'Firefox', 'Safari', 'IE', 'Opera'*/]
+                }
+            },
+            options: {
+                files: ['dist/js/lib.js','test/**/*.js']
+            }
         }
     });
 
@@ -62,5 +100,7 @@ module.exports=function(grunt){
 
     grunt.loadNpmTasks('grunt-contrib-copy');
 
-    grunt.registerTask('default', ['concat','uglify','jshint',/*'copy','cssmin','clean'*/]);
+    grunt.loadNpmTasks('grunt-karma');
+
+    grunt.registerTask('default', ['bower', 'concat', 'uglify', 'karma', /*'copy','cssmin', 'jshint','clean'*/ ]);
 };
